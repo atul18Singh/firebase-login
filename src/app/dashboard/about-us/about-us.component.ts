@@ -11,15 +11,13 @@ import { CommonModule } from '@angular/common';
 })
 export class AboutUsComponent {
   users: any;
-  constructor(private UsersService: UsersService) {}
+  constructor(
+    private UsersService: UsersService
+  ) {}
 
   ngOnInit(): void {
    this.UsersService.getUsers().subscribe((user: any) =>{
       this.users = user
-   })
-
-   this.UsersService.getStudents().subscribe((student : any) =>{
-    this.users = student
    })
   }
 }

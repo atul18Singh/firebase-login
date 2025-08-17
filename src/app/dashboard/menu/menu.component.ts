@@ -11,6 +11,7 @@ import { MovieService } from 'src/services/movie.service';
 export class MenuComponent implements OnInit {
   users: any[] = [];
   exclusive: boolean = false;
+  showMenu = false;
 
   constructor(
     private router: Router,
@@ -43,5 +44,9 @@ export class MenuComponent implements OnInit {
 
   goToDashboard() {
     this.router.navigate(['dashboard'])
+  }
+
+  ShowUserProfileMenu(){
+    this.showMenu = true;
   }
 }
