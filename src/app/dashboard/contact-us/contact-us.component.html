@@ -1,6 +1,37 @@
 
 <app-menu></app-menu>
-<!-- Modal toggle -->
+
+<div class="container mx-auto px-4 py-8">
+  <div class="max-w-2xl mx-auto bg-white shadow-lg rounded-lg p-6">
+    <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Contact Us</h1>
+    <p class="text-gray-600 text-center mb-8">We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+
+    <form class="space-y-6" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+        <input type="text" id="name" formControlName="name" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Enter your full name" required>
+      </div>
+
+      <div>
+        <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+        <input type="email" id="email" formControlName="email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Enter your email address" required>
+      </div>
+
+      <div>
+        <label for="subject" class="block text-sm font-medium text-gray-700">Subject</label>
+        <input type="text" id="subject" formControlName="subject" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Enter the subject" required>
+      </div>
+
+      <div>
+        <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+        <textarea id="message" formControlName="message" rows="5" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Enter your message" required></textarea>
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Send Message</button>
+      </div>
+    </form>
+  </div>
+</div>
 
 
-<!-- Main modal -->

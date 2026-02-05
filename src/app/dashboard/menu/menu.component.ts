@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/auth.service';
 import { MovieService } from 'src/services/movie.service';
+import { UsersService } from 'src/services/users.service';
 
 @Component({
   selector: 'app-menu',
@@ -9,6 +10,9 @@ import { MovieService } from 'src/services/movie.service';
   styleUrl: './menu.component.css'
 })
 export class MenuComponent implements OnInit {
+ShowUserProfileMenu() {
+throw new Error('Method not implemented.');
+}
   users: any[] = [];
   exclusive: boolean = false;
   showMenu = false;
@@ -16,22 +20,26 @@ export class MenuComponent implements OnInit {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private userService: MovieService
+    private movieService: MovieService,
+    private usersService: UsersService
   ) { }
 
   ngOnInit(): void {
-    this.userService.exclusive.subscribe((res: any) => {
-      this.exclusive = res
-    })
+    this.movieService.exclusive.subscribe((res: any) => {
+      this.exclusive = res;
+    });
   }
 
-  // Using async/await for better readability
-  async getUsers() {
-    try {
-     console.log(this.users);
-    } catch (error) {
-      console.error('Error fetching users', error);
-    }
+  getUsers() {
+    this.usersService.getUsers().subscribe({
+      next: (users) => {
+        this.users = users;
+        console.log(this.users);
+      },
+      error: (error) => {
+        console.error('Error fetching users', error);
+      }
+    });
   }
 
   logOut() {
@@ -39,14 +47,14 @@ export class MenuComponent implements OnInit {
   }
 
   contact() {
-    this.router.navigate(['dashboard/contact']);
+    this.router.navigate(['contact']);
   }
 
   goToDashboard() {
-    this.router.navigate(['dashboard'])
+    this.router.navigate(['']);
   }
 
-  ShowUserProfileMenu(){
+  showUserProfileMenu() {
     this.showMenu = true;
   }
 }
